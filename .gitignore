@@ -1,0 +1,43 @@
+# --- secrets ---
+.env
+.env.*
+*.key
+*.pem
+
+# --- python ---
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+
+# virtual environments
+.venv/
+venv/
+env/
+backend/myenv/
+
+# --- node / frontend ---
+node_modules/
+frontend/node_modules/
+dist/
+frontend/dist/
+dist-ssr/
+frontend/dist-ssr/
+*.local
+
+# --- OS / editor ---
+.DS_Store
+Thumbs.db
+
+.vscode/
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
