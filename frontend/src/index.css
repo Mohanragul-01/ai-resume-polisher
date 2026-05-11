@@ -1,11 +1,13 @@
 /* Tailwind v4 is enabled by importing the framework in CSS. */
 @import "tailwindcss";
 
+
 /* Simple defaults for full-page layout. */
 html,
 body {
   height: 100%;
 }
+
 
 body {
   margin: 0;

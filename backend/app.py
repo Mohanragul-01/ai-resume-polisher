@@ -1,22 +1,19 @@
-"""
-WSGI entry module — WHY: `flask --app app run` and Render keep importing `app` from this path.
-
-All logic lives under `resume_polisher/`; this file stays tiny on purpose.
-"""
-
+# app.py
+# This is the main entry point of the backend.
+# Flask (and hosting platforms like Render) look for a variable called `app` in this file.
+# All the real logic lives inside the resume_polisher/ folder — this file stays small on purpose.
 from resume_polisher.config import LOCAL_DEBUG_ENABLED, LOCAL_DEV_HOST, LOCAL_DEV_PORT
 from resume_polisher.factory import create_app
 
-# WHY: Flask CLI / gunicorn convention expects `app` at module scope.
+
+# Create the Flask app by calling our factory function.
+# Gunicorn and the Flask CLI both expect `app` to be available at the top level of this file.
 app = create_app()
 
 
-def run_local_dev_server() -> None:
-    """Start Flask's built-in server — WHY: `python app.py` stays beginner-friendly."""
-
-    # TODO: understand this — dev server is not production-safe.
-    app.run(host=LOCAL_DEV_HOST, port=LOCAL_DEV_PORT, debug=LOCAL_DEBUG_ENABLED)
-
-
+# This block only runs when you execute: python app.py
+# It will NOT run when gunicorn or the Flask CLI imports this file.
 if __name__ == "__main__":
-    run_local_dev_server()
+    # Note: Flask's built-in server is only for local development.
+    # Use gunicorn or another production server when deploying.
+    app.run(host=LOCAL_DEV_HOST, port=LOCAL_DEV_PORT, debug=LOCAL_DEBUG_ENABLED)
